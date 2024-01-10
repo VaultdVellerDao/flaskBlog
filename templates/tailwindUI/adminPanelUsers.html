@@ -1,0 +1,66 @@
+{% extends 'layout.html'%} {%block head%}
+<title>Admin Panel</title>
+{% endblock head %} {%block body%}
+<div>
+  <h1>Users</h1>
+  {% for user in users %}
+  <div>
+    <section>
+      <p>ID: {{user[0]}}</p>
+      <p>Role: {{user[5]}}</p>
+    </section>
+    <section>
+      <p>
+        User Name:
+        <a href="/user/{{user[1].lower()}}">{{user[1]}}</a>
+      </p>
+      <img src="{{user[4]}}" alt="{{user[1]}}" />
+    </section>
+    <section>
+      <p>email: {{user[2]}}</p>
+      <p>Points: {{user[6]}}</p>
+    </section>
+    <section>
+      <p>Join Date: {{user[7]}}</p>
+      <p>Join Time: {{user[8]}}</p>
+    </section>
+    <section>
+      <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="userName" value="{{user[1]}}" />
+        <button
+          type="submit"
+          name="userDeleteButton"
+          class="block mx-auto m-2 hover:text-rose-500 duration-150 font-medium"
+        >
+          delete user
+        </button>
+      </form>
+      {% if user[5] == "admin" %}
+      <a href="/setuserrole/{{user[1].lower()}}/user">set user role to user</a>
+      {% else %}
+      <a href="/setuserrole/{{user[1].lower()}}/admin"
+        >set user role to admin</a
+      >
+      {% endif %}
+    </section>
+  </div>
+  {% endfor %}
+</div>
+<a href="/admin"
+  ><svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon icon-tabler icon-tabler-arrow-back hover:text-rose-500 duration-150"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    stroke-width="2"
+    stroke="currentColor"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" /></svg
+></a>
+{% endblock body %}
