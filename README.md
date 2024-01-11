@@ -1,25 +1,25 @@
-#Копируем репозиторий
+Копируем репозиторий
 ```
 git clone https://github.com/VaultdVellerDao/flaskBlog
 ```
-#Устанавливаем Certbot
+Устанавливаем Certbot
 ```
 sudo apt install certbot python3-certbot-nginx
 ```
-#Выпускаем SSL 
+Выпускаем SSL 
 ```
 sudo certbot --nginx -d test-devops.vizorlabs.tech -d test-devops.vizorlabs.tech
 ```
-#Запускаем приложение
+Запускаем приложение
 ```
 docker compose up -d 
 ```
 
-#Резервное копирование
+Резервное копирование
 >Зайти в директорию приложения и запустить скрипт. Бекап будет в домашней директории.
 ```
 ./backup.sh
 ```
 
-#Восстановление из резервного копирования
+Восстановление из резервного копирования
 >Заменить папку db в папке приложения flaskBlog
