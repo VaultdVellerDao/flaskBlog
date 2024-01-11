@@ -1,4 +1,4 @@
-#Клонируем репозиторий
+#Копируем репозиторий
 ```
 git clone https://github.com/VaultdVellerDao/flaskBlog
 ```
